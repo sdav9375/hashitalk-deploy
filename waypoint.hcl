@@ -37,7 +37,7 @@ app "hello-app-aws" {
 
 variable "image" {
   type = string
-  default = "hashicassie/hashitalk-deploy"
+  default = "sdav9375/hashitalk-deploy"
 }
 variable "username" {
   type = string
