@@ -41,7 +41,7 @@ variable "image" {
 }
 variable "username" {
   type = string
-  default = "hashicassie"
+  default = "sdav9375"
 }
 variable "password" {
   type = string
