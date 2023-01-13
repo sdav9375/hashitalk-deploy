@@ -1,10 +1,6 @@
 project = "hashitalk-deploy-aws"
 
 app "hello-app-aws" {
-  runner {
-    profile = "kubernetes-aws"
-  }
-
   build {
     use "docker" {}
     registry {
