@@ -24,12 +24,10 @@ app "hello-app-aws" {
 
   deploy {
     workspace = "susan-local"
-    deploy {
-      use "docker" {
-        service_port = 3000
-        static_environment = {
-          PLATFORM = "docker (dev)"
-        }
+    use "docker" {
+      service_port = 3000
+      static_environment = {
+        PLATFORM = "docker (dev)"
       }
     }
   }
