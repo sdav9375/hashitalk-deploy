@@ -30,9 +30,8 @@ app "hello-app-aws" {
         PLATFORM = "docker (dev)"
       }
     }
-  }
 
-  deploy {
+    workspace = "default"
     use "kubernetes" {
       service_port = 5300
       namespace = "default"
