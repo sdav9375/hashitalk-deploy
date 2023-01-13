@@ -20,7 +20,7 @@ func main() {
 
 	helloClient := hello.NewHelloServiceClient(conn)
 
-	resp, err := helloClient.SayHello(context.Background(), &hello.MsgRequest{Body: "Hello from Client!! :)"})
+	resp, err := helloClient.SayHello(context.Background(), &hello.MsgRequest{Body: "Hello from Client!!! :)"})
 	if err != nil {
 		log.Fatalf("err when calling SayHello method: %s", err)
 	}
