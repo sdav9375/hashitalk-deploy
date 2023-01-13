@@ -6,6 +6,7 @@ app "hello-app-aws" {
   }
 
   build {
+    workspace = "susan-local"
     use "docker" {}
     registry {
       use "docker" {
@@ -16,6 +17,18 @@ app "hello-app-aws" {
         auth {
           username = var.username
           password = var.password
+        }
+      }
+    }
+  }
+
+  deploy {
+    workspace = "susan-local"
+    deploy {
+      use "docker" {
+        service_port = 3000
+        static_environment = {
+          PLATFORM = "docker (dev)"
         }
       }
     }
