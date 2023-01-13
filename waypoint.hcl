@@ -1,49 +1,49 @@
 project = "hashitalk-deploy-aws"
 
 app "hello-app-aws" {
-  workspace "prod" {
   build {
-    use "docker" {}
-    registry {
-      use "docker" {
-        image = var.image
-        // returns a humanized version of the git hash, taking into account tags and changes
-        tag = gitrefpretty()
-        // Credentials for authentication to push to docker registry
-        auth {
-          username = var.username
-          password = var.password
+    workspace "prod" {
+      use "docker" {}
+      registry {
+        use "docker" {
+          image = var.image
+          // returns a humanized version of the git hash, taking into account tags and changes
+          tag = gitrefpretty()
+          // Credentials for authentication to push to docker registry
+          auth {
+            username = var.username
+            password = var.password
+          }
         }
       }
+    }
+    workspace "local-2" {
+      use "docker" {}
     }
   }
 
   deploy {
-    use "kubernetes" {
-      service_port = 5300
-      namespace = "default"
+    workspace "prod" {
+      use "kubernetes" {
+        service_port = 5300
+        namespace = "default"
+      }
+    }
+    workspace "local-2" {
+      use "docker" {}
     }
   }
   
 
   release {
-    use "kubernetes" {
-      port          = 5300
-    }
-  }
-  }
-
-  workspace "local-2" {
-    build {
-      use "docker" {}
-    }
-
-    deploy {
-      use "docker" {
+    workspace "prod" {
+      use "kubernetes" {
+        port          = 5300
       }
     }
   }
 }
+
 
 variable "image" {
   type = string
