@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+
 	"github.com/hashitalk-deploy/hello"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"log"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 
 	helloClient := hello.NewHelloServiceClient(conn)
 
-	resp, err := helloClient.SayHello(context.Background(), &hello.MsgRequest{Body: "Hello from Client :)"})
+	resp, err := helloClient.SayHello(context.Background(), &hello.MsgRequest{Body: "Hello from Client!! :)"})
 	if err != nil {
 		log.Fatalf("err when calling SayHello method: %s", err)
 	}
