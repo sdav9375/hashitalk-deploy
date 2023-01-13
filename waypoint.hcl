@@ -2,7 +2,9 @@ project = "hashitalk-deploy-aws"
 
 app "hello-app-aws" {
   build {
-    workspace "prod" {
+    use "docker" {}
+    
+    workspace "production" {
       use "docker" {}
       registry {
         use "docker" {
@@ -17,27 +19,24 @@ app "hello-app-aws" {
         }
       }
     }
-    workspace "local-2" {
-      use "docker" {}
-    }
   }
 
   deploy {
-    workspace "prod" {
+    use "docker" {}
+    
+    workspace "production" {
       use "kubernetes" {
         service_port = 5300
         namespace = "default"
       }
     }
-    workspace "local-2" {
-      use "docker" {}
-    }
   }
-  
 
   release {
-    workspace "prod" {
-      use "kubernetes" {
+    use "docker" {}
+    
+    workspace "production" {
+        use "kubernetes" {
         port          = 5300
       }
     }
