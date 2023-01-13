@@ -6,7 +6,6 @@ app "hello-app-aws" {
   }
 
   build {
-    workspace = "susan-local"
     use "docker" {}
     registry {
       use "docker" {
@@ -23,15 +22,6 @@ app "hello-app-aws" {
   }
 
   deploy {
-    workspace = "susan-local"
-    use "docker" {
-      service_port = 3000
-      static_environment = {
-        PLATFORM = "docker (dev)"
-      }
-    }
-
-    workspace = "default"
     use "kubernetes" {
       service_port = 5300
       namespace = "default"
