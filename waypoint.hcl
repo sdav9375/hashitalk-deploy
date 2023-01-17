@@ -36,8 +36,8 @@ app "hello-app-aws" {
     use "docker" {}
     
     workspace "production" {
-        use "kubernetes" {
-        port          = 5300
+      use "kubernetes" {
+        port = 5300
       }
     }
   }
